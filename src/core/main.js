@@ -130,7 +130,8 @@ function main() {
         new EdgeWorkFilter(),
         new InkFilter(),
         new GlassFilter(),
-        new HexagonalPixelateFilter()
+        new HexagonalPixelateFilter(),
+        new Seam()
     ];
     for (var i = 0; i < filters.length; i++) {
         $('select').append('<option>' + filters[i].name + '</option>');
