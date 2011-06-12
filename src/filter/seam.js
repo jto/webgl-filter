@@ -30,11 +30,11 @@ function Seam() {
             float leftMiddle = texture2D(texture, texCoord + dx * -1.0).r;\
             float rightMiddle = texture2D(texture, texCoord + dx * -1.0).r;\
             \
-            float sobelPixelV = (1.0 * topLeft + 2.0 * topMiddle + 1.0 * topRight - 1.0 * bottomLeft - 2.0 * bottomMiddle - 1.0 * bottomRight) / 4.0;\
-            float sobelPixelH = (1.0 * topLeft + 2.0 * leftMiddle + 1.0 * bottomLeft - 1.0 * topRight - 2.0 * rightMiddle - 1.0 * bottomRight) / 4.0;\
+            float sobelPixelV = (1.0 * topLeft + 2.0 * topMiddle + 1.0 * topRight - 1.0 * bottomLeft - 2.0 * bottomMiddle - 1.0 * bottomRight);\
+            float sobelPixelH = (1.0 * topLeft + 2.0 * leftMiddle + 1.0 * bottomLeft - 1.0 * topRight - 2.0 * rightMiddle - 1.0 * bottomRight);\
             \
             float sobelResult = sqrt(sobelPixelV * sobelPixelV + sobelPixelH * sobelPixelH);\
-            gl_FragColor = vec4(texture2D(texture, texCoord).r, vec2(sobelResult), 1.0);\
+            gl_FragColor = vec4(vec3(sobelResult), 1.0);\
         }\
     ');
     
