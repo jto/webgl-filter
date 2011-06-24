@@ -45,7 +45,7 @@ function Seam() {
            varying vec2 texCoord;\
            \
            void main() {\
-               if( abs((currentY / texSize.y) - texCoord.y) < 0.006){\
+               if( abs((currentY / texSize.y) - texCoord.y) <= (1.0 / texSize.y)){\
                    vec2 dx = vec2(1.0 / texSize.x, 0.0);\
                    vec2 dy = vec2(0.0, 1.0 / texSize.y);\
                    \
@@ -54,7 +54,7 @@ function Seam() {
                    float topRight = texture2D(texture, texCoord + dx * 1.0 + dy * -1.0).r;\
                   \
                   float energy = min(topLeft, min(topMiddle, topRight)) + texture2D(texture, texCoord).r;\
-                  energy = (energy / 1.87);\
+                  energy = (energy / 1.8);\
                   gl_FragColor = vec4(vec3(energy), 1.0);\
                   /*gl_FragColor = vec4(vec3(currentY / texSize.y), 1.0);*/\
                } else {\
